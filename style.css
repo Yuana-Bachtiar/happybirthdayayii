@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+
+body {
+  font-family: "Indie Flower", cursive !important;
+  background-color: pink; /* Warna dasar */
+  background-image: url("pitapink.png"); /* Gambar pita */
+  background-repeat: repeat; /* Ulangi secara horizontal dan vertikal */
+  background-size: 50px 50px; /* Ukuran pita kecil */
+  margin: 0;
+  padding: 0;
+
+  /* Flexbox untuk memastikan elemen berada di tengah */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Tinggi penuh halaman */
+  overflow: hidden; /* Hindari scroll jika ada elemen berlebih */
+}
+
+/* Pita */
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  z-index: 2;
+}
+
+.ribbon img {
+  width: 120px;
+  height: auto;
+}
+
+::selection {
+  background: transparent;
+}
+
+h4 {
+  font-size: 26px;
+  line-height: 1px;
+  font-family: "Amatic SC", cursive !important;
+}
+
+.color1 {
+  color: #1bbc9b;
+} /*MOUNTAIN MEADOW*/
+.color2 {
+  color: #c0392b; /*TALL POPPY*/
+}
+
+.card {
+  color: #013243; /* SHERPA BLUE */
+  width: 300px;
+  height: 400px;
+  background: #e0e1dc;
+  transform-style: preserve-3d;
+  box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5),
+    20px 0 60px rgba(0, 0, 0, 0.5);
+  transition: 1s;
+}
+
+.card:hover {
+  transform: scale(1.2);
+  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5),
+    0 10px 100px rgba(0, 0, 0, 0.5);
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #bac1ba;
+  transform-origin: bottom;
+  transform: skewX(-45deg);
+}
+
+.card:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -5px;
+  width: 5px;
+  height: 100%;
+  background: #92a29c;
+  transform-origin: left;
+  transform: skewY(-45deg);
+}
+
+.card .imgBox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-origin: left;
+  transition: 0.7s;
+}
+
+.card .bark {
+  position: absolute;
+  background: #e0e1dc;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.7s;
+}
+
+.card .imgBox img {
+  min-width: 250px;
+  max-height: 400px;
+}
+
+.card:hover .imgBox {
+  transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+  opacity: 1;
+  transition: 0.6s;
+  box-shadow: 300px 200px 100px rgba(0, 0, 0, 0.4) inset;
+}
+
+.card .details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 0 0 0 10px;
+  z-index: -1;
+  margin-top: 70px;
+}
+
+.card .details p {
+  font-size: 15px;
+  line-height: 1.8; /* Jarak antar baris teks */
+  padding: 0 10px; /* Ruang di kiri dan kanan */
+  text-align: center; /* Rata tengah */
+  transform: none; /* Hilangkan kemiringan */
+  margin: 5px 0; /* Jarak antar paragraf */
+}
+
+.card .details h4 {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Media query untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Mengatur arah elemen vertikal */
+    padding: 20px; /* Tambahkan ruang di sekitar */
+  }
+
+  .card {
+    width: 90%; /* Lebar kartu menyesuaikan layar */
+    max-width: 350px; /* Maksimal 350px untuk kartu */
+    height: auto; /* Tinggi otomatis untuk layar kecil */
+  }
+
+  .imgBox img {
+    width: 100%; /* Gambar menyesuaikan lebar kartu */
+    height: auto; /* Tinggi otomatis */
+  }
+
+  .details {
+    margin-top: 20px;
+  }
+}
